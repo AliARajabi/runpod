@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+sentry-sdk
+pydantic-settings
+vllm
