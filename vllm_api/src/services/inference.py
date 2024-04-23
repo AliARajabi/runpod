@@ -86,7 +86,7 @@ def inference_model(product_list: list, config):
         token_count = len(tokens)
         if token_count > max_tokens_:
             max_tokens_ = token_count
-        print(f"input Token count: {token_count}")
+        # print(f"input Token count: {token_count}")
     if max_tokens_ < 500:
         max_tokens_ = 500
     print(f"max_tokens: {max_tokens_}")
@@ -97,10 +97,10 @@ def inference_model(product_list: list, config):
     for ind, output in enumerate(outputs):
         generated_text = output.outputs[0].text
         generated_obj = extract_json_objects(generated_text)
-        print('raw output: \n', generated_text)
-        print('extracted json: \n', generated_obj)
-        print(10 * '*')
-        print(10 * '*')
+        # print('raw output: \n', generated_text)
+        # print('extracted json: \n', generated_obj)
+        # print(10 * '*')
+        # print(10 * '*')
         generated_obj = processed_catalog(generated_obj)
         results.append({'generated_catalog': generated_obj})
     return results
