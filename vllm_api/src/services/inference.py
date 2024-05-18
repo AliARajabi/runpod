@@ -81,11 +81,13 @@ def inference_model(product_list: list, config):
         product_description = f'\nProduct description: {product_description}' if product_description else ''
         product_title = f'Product title: {product_title}' if product_title else ''
         instruction = f'### Human: \n{llama2_prompt}\n{product_title}{product_description}\n### Assistant:'
-        prompts.append(instruction)
         tokens = tokenizer.encode(instruction)
         token_count = len(tokens)
         if token_count > max_tokens_:
             max_tokens_ = token_count
+            if token_count > 4_000:
+                instruction = tokenizer.decode(tokens[:4_000])
+        prompts.append(instruction)
         # print(f"input Token count: {token_count}")
     if max_tokens_ < 500:
         max_tokens_ = 500
