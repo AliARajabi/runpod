@@ -87,6 +87,7 @@ def inference_model(product_list: list, config):
             max_tokens_ = token_count
             if token_count > 4_000:
                 instruction = tokenizer.decode(tokens[:4_000])
+                print(f'The length of the input was more that 4000 token(the token num was {token_count}) so the input was corrupt to {instruction}.')
         prompts.append(instruction)
         # print(f"input Token count: {token_count}")
     if max_tokens_ < 500:
